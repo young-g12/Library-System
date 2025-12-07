@@ -5,6 +5,10 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+
+    public Book() {
+
+    }
     
     public Book(String title) {
         this.title = title;
@@ -19,15 +23,17 @@ public class Book {
         return this.title;
     }
 
-     public void findBook () {
+     public void findBook(Book title) {
         System.out.println("Enter book title or author to find: ");
-        String title = scanner.nextLine();
+        String input = scanner.nextLine();
+
         for (Book b : books) {
-            if (books.contains(this.title)) {
-                System.out.println(b);
-            } 
+            if (b.getTitle().equalsIgnoreCase(input)) {
+                System.out.println("Found " + b.getTitle());
+            } else {
+                System.out.println("no book");
+            }
         }
-        System.out.println("No book with this tile");
     }
 
 
@@ -38,6 +44,12 @@ public class Book {
         Book newBook = new Book(title);
         books.add(newBook);
         System.out.println(newBook + " was added");
+    }
+
+    public void displayAllBooks() {
+        for (Book b : books) {
+            System.out.println(b);
+        }
     }
 
 
