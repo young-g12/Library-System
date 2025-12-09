@@ -51,18 +51,30 @@ public class Book {
         PrintWriter out = new PrintWriter(fileout);
 
         out.println(newBook);
+        
         out.close();
+    }
+
+    public void checkOutBook() throws FileNotFoundException {
+        File checkout = new File("BooksCheckOutList");
+        PrintWriter out = new PrintWriter(checkout);
+
+        System.out.println("Enter a book title: ");
+        String title = scanner.nextLine();
+        Book newBook = new Book(title);
+        books.remove(newBook);
+        System.out.println(newBook + " is checked out");
+        
+    }
+
+    public void returnBook() {
+
     }
 
     public void displayAllBooks() {
         for (Book b : books) {
             System.out.println(b);
         }
-    }
-
-    public void checkOutBook() throws FileNotFoundException {
-        File checkout = new File("BooksCheckOutList");
-        PrintWriter out = new PrintWriter(checkout);
     }
 
 
