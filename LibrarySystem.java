@@ -1,8 +1,9 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class LibrarySystem {
-    public static void main(String[] args) {
-        Book book = new Book("Harry Potter");
+    public static void main(String[] args) throws FileNotFoundException {
+        Book book = new Book();
         // ArrayList<Book> books = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -18,28 +19,19 @@ public class LibrarySystem {
 
         
             if (choice == 1) {
-                book.findBook();
+                book.findBook(new Book());
             } else if (choice == 2) {
                 book.addBook();
             } else if (choice == 3) {
-
+                
             } else if (choice == 4) {
 
             } else {
                 System.out.println("Invalid option, please try again");
             }
+
         }
     }
-
-    // public static void addBooks() {
-    //     Scanner scanner = new Scanner(System.in);
-    //     String title;
-    //     System.out.println("Enter book title: ");
-    //     title = scanner.nextLine();
-    //     ArrayList<Book> books = new ArrayList<>();
-    //     books.add(new Book("null"));
-    // }
-    
     public void checkOutBook() {
 
     }

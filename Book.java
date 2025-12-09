@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class Book {
     public String title;
@@ -37,19 +40,29 @@ public class Book {
     }
 
 
-    public void addBook() {
+    public void addBook() throws FileNotFoundException {
         System.out.println("Enter a book title");
         String title = scanner.nextLine();
 
         Book newBook = new Book(title);
         books.add(newBook);
         System.out.println(newBook + " was added");
+        File fileout = new File("books.txt");
+        PrintWriter out = new PrintWriter(fileout);
+
+        out.println(newBook);
+        out.close();
     }
 
     public void displayAllBooks() {
         for (Book b : books) {
             System.out.println(b);
         }
+    }
+
+    public void checkOutBook() throws FileNotFoundException {
+        File checkout = new File("BooksCheckOutList");
+        PrintWriter out = new PrintWriter(checkout);
     }
 
 
