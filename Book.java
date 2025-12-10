@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Book {
@@ -40,15 +42,17 @@ public class Book {
     }
 
 
-    public void addBook() throws FileNotFoundException {
+    public void addBook() throws IOException {
         System.out.println("Enter a book title");
         String title = scanner.nextLine();
 
         Book newBook = new Book(title);
         books.add(newBook);
         System.out.println(newBook + " was added");
-        File fileout = new File("books.txt");
-        PrintWriter out = new PrintWriter(fileout);
+
+
+        FileWriter fw = new FileWriter("books.txt", true);
+        PrintWriter out = new PrintWriter(fw);
 
         out.println(newBook);
         
