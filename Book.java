@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,12 +63,30 @@ public class Book {
     }
 
     public void checkOutBook() throws FileNotFoundException {
-        File checkout = new File("BooksCheckOutList");
-        PrintWriter out = new PrintWriter(checkout);
+        File inputFile = new File("books.txt");
+        File tempFile = new File("tempFile.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            System.out.println("Enter a book title: ");
 
-        System.out.println("Enter a book title: ");
+            String lineToRemove = "This is the line to remove."; // Define the line to be removed
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+            // Trim newline when comparing with lineToRemove
+            String trimmedLine = currentLine.trim();
+            if (!trimmedLine.equals(lineToRemove)) {
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+   }
+        } catch (FileNotFoundException e) {
+            throw e;
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         String title = scanner.nextLine();
         Book newBook = new Book(title);
+        //does not remove book from system
         books.remove(newBook);
         System.out.println(newBook + " is checked out");
         
