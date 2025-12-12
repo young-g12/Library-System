@@ -86,9 +86,13 @@ public class Book {
         }
         String title = scanner.nextLine();
         Book newBook = new Book(title);
+        if (books.contains(newBook)) {
+            books.remove(newBook);
+            System.out.println(newBook + " is checked out");
+        } else {
+            System.out.println("Book is not available to checkout");
+        }
         //does not remove book from system
-        books.remove(newBook);
-        System.out.println(newBook + " is checked out");
         
     }
 
