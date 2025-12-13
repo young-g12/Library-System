@@ -35,13 +35,19 @@ public class Book {
         System.out.println("Enter book title or author to find: ");
         String input = scanner.nextLine();
 
-        for (Book b : books) {
-            if (b.getTitle().equalsIgnoreCase(input)) {
-                System.out.println("Found " + b.getTitle());
-            } else {
-                System.out.println("no book");
+        if (books.contains(input)) {
+            System.out.println("No book in system");
+        } else {
+            
+            for (Book b : books) {
+                if (b.getTitle().equalsIgnoreCase(input)) {
+                    System.out.println("Found " + b.getTitle());
+                } else {
+                    System.out.println("no book");
+                }
             }
         }
+
     }
 
 
