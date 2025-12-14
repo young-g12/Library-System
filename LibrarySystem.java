@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class LibrarySystem {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, WrongInputException {
         Book book = new Book();
         // ArrayList<Book> books = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -18,7 +18,9 @@ public class LibrarySystem {
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
 
-        
+        if (choice ==0) {
+            break;
+        }
             if (choice == 1) {
                 book.findBook(book);
             } else if (choice == 2) {
@@ -28,7 +30,7 @@ public class LibrarySystem {
                 int i = 0;
                 while (i <= 3) {
                     if (choice == 0) {
-                        book.displayAllBooks();
+                        // book.displayAllBooks();
                         break;
                     } else {
                         book.checkOutBook();
