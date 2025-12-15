@@ -32,22 +32,16 @@ public class Book {
     }
 
      public void findBook(Book title) {
-        System.out.println("Enter book title or author to find: ");
+        System.out.println("Enter book title to find: ");
         String input = scanner.nextLine();
 
-        if (books.contains(input)) {
-            System.out.println("No book in system");
-        } else {
-            
-            for (Book b : books) {
-                if (b.getTitle().equalsIgnoreCase(input)) {
-                    System.out.println("Found " + b.getTitle());
-                } else {
-                    System.out.println("no book");
-                }
+        for (Book b : books) {
+            if (b.getTitle().equalsIgnoreCase(input)) {
+                System.out.println("Found " + b.getTitle());
+            } else {
+                System.out.println("No book in system");
             }
-        }
-
+       }
     }
 
 
@@ -59,6 +53,10 @@ public class Book {
         books.add(newBook);
         System.out.println(newBook + " was added");
 
+        if (books.contains(newBook)) {
+            System.out.println("Book is already added");
+        }
+
 
         FileWriter fw = new FileWriter("books.txt", true);
         PrintWriter out = new PrintWriter(fw);
@@ -69,6 +67,7 @@ public class Book {
     }
 
     public void checkOutBook() throws FileNotFoundException {
+        int count = 0;
         File inputFile = new File("books.txt");
         File tempFile = new File("tempFile.txt");
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -90,11 +89,17 @@ public class Book {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        // Loop checkout here; will not let user checkout more than 3 items
         String title = scanner.nextLine();
         Book newBook = new Book(title);
+
         if (books.contains(newBook)) {
-            books.remove(newBook);
+            books.remove(title);
             System.out.println(newBook + " is checked out");
+            count++;
+            if (count == 3) {
+                System.out.println("Cannot checkout anymore books");
+            }
         } else {
             System.out.println("Book is not available to checkout");
         }
@@ -103,7 +108,20 @@ public class Book {
     }
 
     public void returnBook() {
+         System.out.println("Enter a book title");
+        String title = scanner.nextLine();
 
+        Book newBook = new Book(title);
+        books.add(newBook);
+        System.out.println(newBook + " was returned");
+
+
+        // FileWriter fw = new FileWriter("books.txt", true);
+        // PrintWriter out = new PrintWriter(fw);
+
+        // out.println(newBook);
+        
+        // out.close();
     }
 
     public void displayAllBooks() {
