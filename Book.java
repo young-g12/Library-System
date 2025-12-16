@@ -13,7 +13,7 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    Book newBook = new Book();
+    // Book newBook = new Book();
 
     public Book() {
 
@@ -50,7 +50,7 @@ public class Book {
         System.out.println("Enter a book title");
         title = scanner.nextLine();
 
-        // Book newBook = new Book(title);
+        Book newBook = new Book(title);
        
 
         if (books.contains(newBook)) {
