@@ -93,18 +93,22 @@ public class Book {
 //             e.printStackTrace();
 //         }
         // Loop checkout here; will not let user checkout more than 3 items
+        // Book newBook = new Book(title);
+	    System.out.println("Enter book you'd like to check out: ");
         title = scanner.nextLine();
 
-        if (books.contains(title)) {
-            books.remove(title);
-            System.out.println(title + " is checked out");
-            count++;
-            if (count == 3) {
-                System.out.println("Cannot checkout anymore books");
-            }
-        } else {
-            System.out.println("Book is not available to checkout");
-        }
+        books.remove(title);
+        System.out.println(title + " is removed");
+        // if (books.contains(books)) {
+        //     books.remove(title);
+        //     System.out.println(title + " is checked out");
+        //     count++;
+        //     if (count == 3) {
+        //         System.out.println("Cannot checkout anymore books");
+        //     }
+        // } else {
+        //     System.out.println("Book is not available to checkout");
+        // }
         //does not remove book from system
         
     }
@@ -127,8 +131,13 @@ public class Book {
     }
 
     public void displayAllBooks() {
-        for (Book b : books) {
-            System.out.println(b);
+        //fix 
+        if (books.contains(new Book())) {
+            for (Book b : books) {
+                System.out.println(b);
+            }
+        } else {
+            System.out.println("Currently no books in database");
         }
     }
 
