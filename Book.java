@@ -13,6 +13,7 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    Book newBook = new Book();
 
     public Book() {
 
@@ -47,9 +48,9 @@ public class Book {
 
     public void addBook() throws IOException {
         System.out.println("Enter a book title");
-        String title = scanner.nextLine();
+        title = scanner.nextLine();
 
-        Book newBook = new Book(title);
+        // Book newBook = new Book(title);
        
 
         if (books.contains(newBook)) {
@@ -70,34 +71,33 @@ public class Book {
 
     public void checkOutBook() throws FileNotFoundException {
         int count = 0;
-        File inputFile = new File("books.txt");
-        File tempFile = new File("tempFile.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
-            System.out.println("Enter a book title: ");
+//         File inputFile = new File("books.txt");
+//         File tempFile = new File("tempFile.txt");
+//         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+//         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+//             System.out.println("Enter a book title: ");
 
-            String lineToRemove = "This is the line to remove."; // Define the line to be removed
-            String currentLine;
-            while ((currentLine = reader.readLine()) != null) {
-            // Trim newline when comparing with lineToRemove
-            String trimmedLine = currentLine.trim();
-            if (!trimmedLine.equals(lineToRemove)) {
-                writer.write(currentLine + System.getProperty("line.separator"));
-            }
-   }
-        } catch (FileNotFoundException e) {
-            throw e;
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//             String lineToRemove = "This is the line to remove."; // Define the line to be removed
+//             String currentLine;
+//             while ((currentLine = reader.readLine()) != null) {
+//             // Trim newline when comparing with lineToRemove
+//             String trimmedLine = currentLine.trim();
+//             if (!trimmedLine.equals(lineToRemove)) {
+//                 writer.write(currentLine + System.getProperty("line.separator"));
+//             }
+//    }
+//         } catch (FileNotFoundException e) {
+//             throw e;
+//         } catch (IOException e) {
+//             // TODO Auto-generated catch block
+//             e.printStackTrace();
+//         }
         // Loop checkout here; will not let user checkout more than 3 items
-        String title = scanner.nextLine();
-        Book newBook = new Book(title);
+        title = scanner.nextLine();
 
-        if (books.contains(newBook)) {
+        if (books.contains(title)) {
             books.remove(title);
-            System.out.println(newBook + " is checked out");
+            System.out.println(title + " is checked out");
             count++;
             if (count == 3) {
                 System.out.println("Cannot checkout anymore books");
