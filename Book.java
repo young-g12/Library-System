@@ -50,11 +50,13 @@ public class Book {
         String title = scanner.nextLine();
 
         Book newBook = new Book(title);
-        books.add(newBook);
-        System.out.println(newBook + " was added");
+       
 
         if (books.contains(newBook)) {
             System.out.println("Book is already added");
+        } else {
+            books.add(newBook);
+            System.out.println(newBook + " was added");
         }
 
 
