@@ -132,12 +132,12 @@ public class Book {
 
     public void displayAllBooks() {
         //fix 
-        if (books.contains(new Book())) {
+        if (books.size() == 0) {
+            System.out.println("Currently no books in database");
+        } else {
             for (Book b : books) {
                 System.out.println(b);
             }
-        } else {
-            System.out.println("Currently no books in database");
         }
     }
 
