@@ -13,7 +13,7 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    // Book newBook = new Book();
+    Book newBook = new Book(title);
 
     public Book() {
 
@@ -32,41 +32,54 @@ public class Book {
         return this.title;
     }
 
+    //Searches for a book in the list
+    //will print message to console if title cannot be found
      public void findBook(Book title) {
         System.out.println("Enter book title to find: ");
         String input = scanner.nextLine();
 
-        for (Book b : books) {
-            if (b.getTitle().equalsIgnoreCase(input)) {
-                System.out.println("Found " + b.getTitle());
-            } else {
-                System.out.println("No book in system");
-            }
-       }
+    //     for (Book b : books) {
+    //         if (b.getTitle().equalsIgnoreCase(input)) {
+    //             System.out.println("Found " + b.getTitle());
+    //         } else {
+    //             System.out.println("No book in system");
+    //         }
+    //    }
+
+        if (getTitle().contains(input)) {
+            System.out.println("Found" + getTitle());
+        } else {
+            System.out.println("No puede encontrar el libro, lo siento");
+
+        }
     }
 
-
+    /* User adds new book to library System
+    *   System will alert user if that book is alreay in system; no duplicates
+    *   Once book is verified then added it will update Books.txt file 
+    */ 
     public void addBook() throws IOException {
+        Book newbook = new Book(title);
         System.out.println("Enter a book title");
         title = scanner.nextLine();
 
-        Book newBook = new Book(title);
+        
        
-
-        if (books.contains(newBook)) {
+        // verifies there isn't a duplicate book already in the arraylist 
+        if (books.contains(newbook)) {
             System.out.println("Book is already added");
         } else {
-            books.add(newBook);
-            System.out.println(newBook + " was added");
+            books.add(newbook);
+            System.out.println(title + " was added");
         }
 
 
-        FileWriter fw = new FileWriter("books.txt", true);
-        PrintWriter out = new PrintWriter(fw);
+        // FileWriter fw = new FileWriter("books.txt", true);
+        // PrintWriter out = new PrintWriter(fw);
 
-        out.println(newBook);
+        // out.println(title);
         
-        out.close();
+        // out.close();
     }
 
     public void checkOutBook() throws FileNotFoundException {
