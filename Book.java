@@ -13,7 +13,7 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    Book newBook = new Book(title);
+    // Book newBook
 
     public Book() {
 
@@ -59,19 +59,28 @@ public class Book {
     *   Once book is verified then added it will update Books.txt file 
     */ 
     public void addBook() throws IOException {
-        Book newbook = new Book(title);
         System.out.println("Enter a book title");
         title = scanner.nextLine();
-
-        
        
         // verifies there isn't a duplicate book already in the arraylist 
-        if (books.contains(newbook)) {
-            System.out.println("Book is already added");
-        } else {
-            books.add(newbook);
-            System.out.println(title + " was added");
+        // if (books.contains("harry") || books.contains(title))  {
+        //     System.out.println("Book is already added");
+        // } else {
+        //     books.add(newbook);
+        //     System.out.println(title + " was added");
+        // }
+
+        for (Book b : books) {
+            if (b.getTitle().equalsIgnoreCase(title)) {
+                System.out.println("Books already exist in system");
+                return;
+            }
         }
+
+        Book newbook = new Book(title);
+        books.add(newbook);
+        System.out.println(title + " was added");
+
 
 
         // FileWriter fw = new FileWriter("books.txt", true);
