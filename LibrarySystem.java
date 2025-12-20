@@ -18,27 +18,23 @@ public class LibrarySystem {
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
 
-        if (choice ==0) {
-            break;
-        }
+            //ends program
+            if (choice ==0) {
+                System.out.println("Exiting Library System");
+                break;
+            }
+
             if (choice == 1) {
                 book.findBook(book);
             } else if (choice == 2) {
                 book.addBook();
-                //Allows user to checkout up to 3 books
             } else if (choice == 3) {
-                int i = 0;
-                while (i <= 3) {
-                    if (choice == 0) {
-                        // book.displayAllBooks();
-                        break;
-                    } else {
-                        book.checkOutBook();
-                    }
-                    //keeps track of books 
-                    i++;
+
+                if (choice == 3) {
+                    book.checkOutBook();
+                } else {
+                    
                 } 
-                System.out.println("Cannot check out any more books");
             } else if (choice == 4) {
                 book.returnBook();
             } else if(choice == 5) {
