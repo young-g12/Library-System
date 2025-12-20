@@ -47,7 +47,7 @@ public class Book {
     //    }
 
         if (getTitle().contains(input)) {
-            System.out.println("Found" + getTitle());
+            System.out.println("Found " + getTitle());
         } else {
             System.out.println("No puede encontrar el libro, lo siento");
 
@@ -92,7 +92,7 @@ public class Book {
     }
 
     public void checkOutBook() throws FileNotFoundException {
-        int count = 0;
+        // int count = 0;
 //         File inputFile = new File("books.txt");
 //         File tempFile = new File("tempFile.txt");
 //         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -119,8 +119,16 @@ public class Book {
 	    System.out.println("Enter book you'd like to check out: ");
         title = scanner.nextLine();
 
+          for (Book b : books) {
+            if (b.getTitle().equalsIgnoreCase(title)) {
+                System.out.println("There are no books to check out");
+                
+            }
+        }
+    
         books.remove(title);
         System.out.println(title + " is removed");
+
         // if (books.contains(books)) {
         //     books.remove(title);
         //     System.out.println(title + " is checked out");
@@ -138,6 +146,7 @@ public class Book {
     public void returnBook() {
          System.out.println("Enter a book title");
         String title = scanner.nextLine();
+
 
         Book newBook = new Book(title);
         books.add(newBook);
