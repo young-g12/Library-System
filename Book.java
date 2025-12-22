@@ -34,9 +34,9 @@ public class Book {
 
     //Searches for a book in the list
     //will print message to console if title cannot be found
-     public void findBook(Book title) {
+     public void findBook() {
         System.out.println("Enter book title to find: ");
-        String input = scanner.nextLine();
+        String title = scanner.nextLine();
 
     //     for (Book b : books) {
     //         if (b.getTitle().equalsIgnoreCase(input)) {
@@ -46,12 +46,14 @@ public class Book {
     //         }
     //    }
 
-        if (getTitle().contains(input)) {
-            System.out.println("Found " + getTitle());
-        } else {
-            System.out.println("No puede encontrar el libro, lo siento");
-
+        for (Book b : books) {
+            if (b.getTitle().equalsIgnoreCase(title)) {
+                System.out.println("title found");
+                return;
+            }
         }
+
+        System.out.println("Book was not found");
     }
 
     /* User adds new book to library System
@@ -117,17 +119,26 @@ public class Book {
         // Loop checkout here; will not let user checkout more than 3 items
         // Book newBook = new Book(title);
 	    System.out.println("Enter book you'd like to check out: ");
-        title = scanner.nextLine();
+        String title = scanner.nextLine();
 
-          for (Book b : books) {
+        boolean found = false;
+
+          for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+
             if (b.getTitle().equalsIgnoreCase(title)) {
-                System.out.println("There are no books to check out");
-                
+                books.remove(i);
+                System.out.println(title + " has been checked out.");
+                found = true;
+                break;
             }
-        }
-    
-        books.remove(title);
-        System.out.println(title + " is removed");
+          }
+
+          if (!found) {
+            System.out.println("Book is not available.");
+          }
+      // books.remove(title);
+        // System.out.println(title + " is removed");
 
         // if (books.contains(books)) {
         //     books.remove(title);
@@ -171,8 +182,5 @@ public class Book {
             }
         }
     }
-
-
-    
 
 }
