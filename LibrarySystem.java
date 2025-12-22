@@ -25,16 +25,11 @@ public class LibrarySystem {
             }
 
             if (choice == 1) {
-                book.findBook(book);
+                book.findBook();
             } else if (choice == 2) {
                 book.addBook();
             } else if (choice == 3) {
-
-                if (choice == 3) {
-                    book.checkOutBook();
-                } else {
-                    
-                } 
+                book.checkOutBook();
             } else if (choice == 4) {
                 book.returnBook();
             } else if(choice == 5) {
