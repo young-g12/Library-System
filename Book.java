@@ -13,6 +13,7 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    Patron p = new Patron();
     // Book newBook
 
     public Book() {
@@ -53,7 +54,7 @@ public class Book {
             }
         }
 
-        System.out.println("Book was not found");
+        System.out.println("No book was found with this title");
     }
 
     /* User adds new book to library System
@@ -118,13 +119,17 @@ public class Book {
 //         }
         // Loop checkout here; will not let user checkout more than 3 items
         // Book newBook = new Book(title);
+
+        // checks if user can checkout any more books before moving on.
+        p.limitsBooks();
+
 	    System.out.println("Enter book you'd like to check out: ");
         String title = scanner.nextLine();
 
         boolean found = false;
 
         int count = 3;
-         while (count < 0) {
+        
 
             for (int i = 0; i < books.size(); i++) {
             Book b = books.get(i);
@@ -142,8 +147,6 @@ public class Book {
           if (!found) {
             System.out.println("Book is not available.");
           }
-          
-         }//end of while loop
 
           
     }
