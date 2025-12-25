@@ -1,14 +1,23 @@
+import java.util.ArrayList;
+
 public class Patron {
     private String name;
-    Book book = new Book();
+    private int numOfBooksCheckedOut;
+    ArrayList<Book> books = new ArrayList<>();
 
     public Patron() {
 
     }
 
-    public void limitsBooks() {
-        if ( < 6) {
+    public String getName() {
+        return name;
+    }
 
+
+    public void limitsBooks() {
+        if (books.size() == 3) {
+            System.out.println("Sorry, you can no longer checkout a book");
+            System.out.println("You may return one or more in order to continue checkout");
         }
     }
 
