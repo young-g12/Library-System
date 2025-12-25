@@ -123,35 +123,29 @@ public class Book {
 
         boolean found = false;
 
-          for (int i = 0; i < books.size(); i++) {
-            Book b = books.get(i);
+        int count = 3;
+         while (count < 0) {
 
+            for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
             if (b.getTitle().equalsIgnoreCase(title)) {
                 books.remove(i);
                 System.out.println(title + " has been checked out.");
                 found = true;
                 break;
             }
-          }
+            count--;
+            System.out.println("Cannot check out any more books");
+          System.out.println(count);
+          } //end of for loop
 
           if (!found) {
             System.out.println("Book is not available.");
           }
-      // books.remove(title);
-        // System.out.println(title + " is removed");
+          
+         }//end of while loop
 
-        // if (books.contains(books)) {
-        //     books.remove(title);
-        //     System.out.println(title + " is checked out");
-        //     count++;
-        //     if (count == 3) {
-        //         System.out.println("Cannot checkout anymore books");
-        //     }
-        // } else {
-        //     System.out.println("Book is not available to checkout");
-        // }
-        //does not remove book from system
-        
+          
     }
 
     public void returnBook() {
