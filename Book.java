@@ -95,64 +95,37 @@ public class Book {
     }
 
     public void checkOutBook() throws FileNotFoundException {
-        // int count = 0;
-//         File inputFile = new File("books.txt");
-//         File tempFile = new File("tempFile.txt");
-//         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-//         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
-//             System.out.println("Enter a book title: ");
-
-//             String lineToRemove = "This is the line to remove."; // Define the line to be removed
-//             String currentLine;
-//             while ((currentLine = reader.readLine()) != null) {
-//             // Trim newline when comparing with lineToRemove
-//             String trimmedLine = currentLine.trim();
-//             if (!trimmedLine.equals(lineToRemove)) {
-//                 writer.write(currentLine + System.getProperty("line.separator"));
-//             }
-//    }
-//         } catch (FileNotFoundException e) {
-//             throw e;
-//         } catch (IOException e) {
-//             // TODO Auto-generated catch block
-//             e.printStackTrace();
-//         }
-        // Loop checkout here; will not let user checkout more than 3 items
-        // Book newBook = new Book(title);
-
-        // checks if user can checkout any more books before moving on.
-        p.limitsBooks();
 
 	    System.out.println("Enter book you'd like to check out: ");
         String title = scanner.nextLine();
 
         boolean found = false;
-
-        int count = 3;
-        
-
-            for (int i = 0; i < books.size(); i++) {
-            Book b = books.get(i);
-            if (b.getTitle().equalsIgnoreCase(title)) {
-                books.remove(i);
-                System.out.println(title + " has been checked out.");
-                found = true;
-                break;
+            int count = 0;
+            while (found = false) {
+                for (int i = 0; i < books.size(); i++) {
+                Book b = books.get(i);
+                    if (b.getTitle().equalsIgnoreCase(title)) {
+                        books.remove(i);
+                        System.out.println(title + " has been checked out.");
+                        found = true;
+                        break;
+                    }
+                } 
+                System.out.println(count);
+                count++;   
             }
-            count--;
-            System.out.println("Cannot check out any more books");
-          System.out.println(count);
-          } //end of for loop
+               
+               
 
-          if (!found) {
-            System.out.println("Book is not available.");
-          }
 
-          
+                if (!found) {
+                    System.out.println("Book is not available.");
+                }
+            
     }
 
-    public void returnBook() {
-         System.out.println("Enter a book title");
+    public void returnBook() throws IOException {
+        System.out.println("Enter a book title");
         String title = scanner.nextLine();
 
 
@@ -161,12 +134,12 @@ public class Book {
         System.out.println(newBook + " was returned");
 
 
-        // FileWriter fw = new FileWriter("books.txt", true);
-        // PrintWriter out = new PrintWriter(fw);
+        FileWriter fw = new FileWriter("books.txt", true);
+        PrintWriter out = new PrintWriter(fw);
 
-        // out.println(newBook);
+        out.println(newBook);
         
-        // out.close();
+        out.close();
     }
 
     public void displayAllBooks() {
