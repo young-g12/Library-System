@@ -13,6 +13,7 @@ public class Book {
     public String title;
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    private int checkedOutCount = 0;
     Patron p = new Patron();
     // Book newBook
 
@@ -100,24 +101,21 @@ public class Book {
         String title = scanner.nextLine();
 
         boolean found = false;
-            int count = 0;
-            while (found = false) {
+         
+        
                 for (int i = 0; i < books.size(); i++) {
                 Book b = books.get(i);
+                
                     if (b.getTitle().equalsIgnoreCase(title)) {
                         books.remove(i);
+                         checkedOutCount++;
                         System.out.println(title + " has been checked out.");
+                        System.out.println("Total books checked out: " + checkedOutCount);
                         found = true;
                         break;
                     }
                 } 
-                System.out.println(count);
-                count++;   
-            }
-               
-               
-
-
+                 
                 if (!found) {
                     System.out.println("Book is not available.");
                 }
