@@ -113,6 +113,8 @@ public class Book {
                                 System.out.println("Total books checked out: " + checkedOutCount);
                                 found = true;
                                 break;
+                            } else { 
+                                System.out.println("Book is not available");
                             }
                     } else {
                         System.out.println("You have reached max checkout limit");
