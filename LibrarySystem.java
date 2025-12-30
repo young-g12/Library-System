@@ -8,8 +8,10 @@ public class LibrarySystem {
         // ArrayList<Book> books = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Welcome to Library System ");
+        
         while (true) {
-            System.out.println("Welcome to Library System ");
+            
             System.out.println("1. Search Book by title");
             System.out.println("2. Add book");
             System.out.println("3. Checkout book");
