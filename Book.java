@@ -105,14 +105,17 @@ public class Book {
         
                 for (int i = 0; i < books.size(); i++) {
                 Book b = books.get(i);
-                
-                    if (b.getTitle().equalsIgnoreCase(title)) {
-                        books.remove(i);
-                         checkedOutCount++;
-                        System.out.println(title + " has been checked out.");
-                        System.out.println("Total books checked out: " + checkedOutCount);
-                        found = true;
-                        break;
+                    if (checkedOutCount < 3 ) {
+                            if (b.getTitle().equalsIgnoreCase(title)) {
+                                books.remove(i);
+                                checkedOutCount++;
+                                System.out.println(title + " has been checked out.");
+                                System.out.println("Total books checked out: " + checkedOutCount);
+                                found = true;
+                                break;
+                            }
+                    } else {
+                        System.out.println("You have reached max checkout limit");
                     }
                 } 
                  
