@@ -87,12 +87,12 @@ public class Book {
 
 
 
-        // FileWriter fw = new FileWriter("books.txt", true);
-        // PrintWriter out = new PrintWriter(fw);
+        FileWriter fw = new FileWriter("books.txt", true);
+        PrintWriter out = new PrintWriter(fw);
 
-        // out.println(title);
+        out.println(title);
         
-        // out.close();
+        out.close();
     }
 
     public void checkOutBook() throws FileNotFoundException {
