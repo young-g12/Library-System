@@ -139,12 +139,12 @@ public class Book {
         System.out.println(newBook + " was returned");
 
 
-        // FileWriter fw = new FileWriter("books.txt", true);
-        // PrintWriter out = new PrintWriter(fw);
+        FileWriter fw = new FileWriter("books.txt", true);
+        PrintWriter out = new PrintWriter(fw);
 
-        // out.println(newBook);
+        out.println(newBook);
         
-        // out.close();
+        out.close();
     }
 
     public void displayAllBooks() {
