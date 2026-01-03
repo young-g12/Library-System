@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -87,15 +86,15 @@ public class Book {
 
 
 
-        // FileWriter fw = new FileWriter("books.txt", true);
-        // PrintWriter out = new PrintWriter(fw);
+        FileWriter fw = new FileWriter("books.txt", true);
+        PrintWriter out = new PrintWriter(fw);
 
-        // out.println(title);
+        out.println(title);
         
-        // out.close();
+        out.close();
     }
 
-    public void checkOutBook() throws FileNotFoundException {
+    public void checkOutBook() throws IOException {
 
 	    System.out.println("Enter book you'd like to check out: ");
         String title = scanner.nextLine();
@@ -109,9 +108,12 @@ public class Book {
                             if (b.getTitle().equalsIgnoreCase(title)) {
                                 books.remove(i);
                                 checkedOutCount++;
+                                found = true;
                                 System.out.println(title + " has been checked out.");
                                 System.out.println("Total books checked out: " + checkedOutCount);
-                                found = true;
+                                
+                                rewriteFile();
+                                
                                 break;
                             } else { 
                                 System.out.println("Book is not available");
@@ -137,12 +139,12 @@ public class Book {
         System.out.println(newBook + " was returned");
 
 
-        FileWriter fw = new FileWriter("books.txt", true);
-        PrintWriter out = new PrintWriter(fw);
+        // FileWriter fw = new FileWriter("books.txt", true);
+        // PrintWriter out = new PrintWriter(fw);
 
-        out.println(newBook);
+        // out.println(newBook);
         
-        out.close();
+        // out.close();
     }
 
     public void displayAllBooks() {
@@ -155,5 +157,15 @@ public class Book {
             }
         }
     }
+
+    private void rewriteFile() throws IOException {
+    PrintWriter out = new PrintWriter(new FileWriter("books.txt"));
+
+    for (Book b : books) {
+        out.println(b.getTitle());
+    }
+
+    out.close();
+}
 
 }
