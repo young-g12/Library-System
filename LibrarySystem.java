@@ -11,7 +11,7 @@ public class LibrarySystem {
     public static void main(String[] args) throws IOException, WrongInputException {
         Book book = new Book();
         Patron p  = new Patron();
-        // ArrayList<Book> books = new ArrayList<>();
+        ArrayList<Patron> pat = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to Library System ");
@@ -35,39 +35,24 @@ public class LibrarySystem {
                 continue;
             }
 
-             if (choice < 0 || choice > 5) {
+             if (choice < 0 || choice > 6) {
                 throw new WrongInputException();
             }
 
-            //ends program
-            // if (choice ==0) {
-            //     System.out.println("Exiting Library System");
-            //     break;
-            // }
-
-            // if (choice == 1) {
-            //     book.findBook();
-            // } else if (choice == 2) {
-            //     book.addBook();
-            // } else if (choice == 3) {
-            //     book.checkOutBook();
-            //     // p.limitsBooks();
-            // } else if (choice == 4) {
-            //     book.returnBook();
-            // } else if(choice == 5) {
-            //     book.displayAllBooks();
-            // } else {
-            //     System.out.println("Invalid option, please try again");
-            // }
-
             switch (choice) {
                 case 0 -> endProgram();
+                //for library staff
                 case 1 -> book.findBook();
+                case 5 -> book.displayAllBooks();
+
+                // for patrons
+                case 6 -> p.createPatron();
                 case 2 -> book.addBook();
                 case 3 -> book.checkOutBook();
                 case 4 -> book.returnBook();
-                case 5 -> book.displayAllBooks();
-                default -> System.out.println("Invalid iption, please try again");
+                
+                
+                default -> System.out.println("Invalid option, please try again");
             }
         
         }
@@ -76,5 +61,9 @@ public class LibrarySystem {
     public static void endProgram() {
             System.out.println("Exiting Library System...");
             System.exit(0);
+    }
+
+    public static void displayPatrons() {
+        //will display patron's name with books they have cheecked
     }
 }
