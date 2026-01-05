@@ -13,8 +13,7 @@ public class Book {
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     private int checkedOutCount = 0;
-    Patron p = new Patron();
-    // Book newBook
+    // Patron p = new Patron();
 
     public Book() {
 

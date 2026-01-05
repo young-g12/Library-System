@@ -11,18 +11,20 @@ public class LibrarySystem {
     public static void main(String[] args) throws IOException, WrongInputException {
         Book book = new Book();
         Patron p  = new Patron();
-        ArrayList<Patron> pat = new ArrayList<>();
+        ArrayList<Patron> patrons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to Library System ");
         
         while (true) {
             
-            System.out.println("1. Search Book by title");
-            System.out.println("2. Add book");
-            System.out.println("3. Checkout book");
-            System.out.println("4. return book");
-            System.out.println("5. Display books in system");
+            System.out.println("1. Search Book by Title");
+            System.out.println("2. Add Books");
+            System.out.println("3. Checkout Books");
+            System.out.println("4. Return book");
+            System.out.println("5. Display Books in System");
+            System.out.println("6. Create Patron Book Log");
+            System.out.println("7. Display Patrons in system");
             System.out.println();
             System.out.print("Enter choice: ");
             int choice;
@@ -35,7 +37,7 @@ public class LibrarySystem {
                 continue;
             }
 
-             if (choice < 0 || choice > 6) {
+             if (choice < 0 || choice > 7) {
                 throw new WrongInputException();
             }
 
@@ -50,6 +52,7 @@ public class LibrarySystem {
                 case 2 -> book.addBook();
                 case 3 -> book.checkOutBook();
                 case 4 -> book.returnBook();
+                case 7 -> p.searchPatrons();
                 
                 
                 default -> System.out.println("Invalid option, please try again");
@@ -61,9 +64,5 @@ public class LibrarySystem {
     public static void endProgram() {
             System.out.println("Exiting Library System...");
             System.exit(0);
-    }
-
-    public static void displayPatrons() {
-        //will display patron's name with books they have cheecked
     }
 }
