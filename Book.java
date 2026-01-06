@@ -38,14 +38,6 @@ public class Book {
         System.out.println("Enter book title to find: ");
         String title = scanner.nextLine();
 
-    //     for (Book b : books) {
-    //         if (b.getTitle().equalsIgnoreCase(input)) {
-    //             System.out.println("Found " + b.getTitle());
-    //         } else {
-    //             System.out.println("No book in system");
-    //         }
-    //    }
-
         for (Book b : books) {
             if (b.getTitle().equalsIgnoreCase(title)) {
                 System.out.println("title found");
@@ -63,15 +55,7 @@ public class Book {
     public void addBook() throws IOException {
         System.out.println("Enter a book title");
         title = scanner.nextLine();
-       
-        // verifies there isn't a duplicate book already in the arraylist 
-        // if (books.contains("harry") || books.contains(title))  {
-        //     System.out.println("Book is already added");
-        // } else {
-        //     books.add(newbook);
-        //     System.out.println(title + " was added");
-        // }
-
+  
         for (Book b : books) {
             if (b.getTitle().equalsIgnoreCase(title)) {
                 System.out.println("Books already exist in system");
@@ -82,8 +66,6 @@ public class Book {
         Book newbook = new Book(title);
         books.add(newbook);
         System.out.println(title + " was added");
-
-
 
         FileWriter fw = new FileWriter("books.txt", true);
         PrintWriter out = new PrintWriter(fw);

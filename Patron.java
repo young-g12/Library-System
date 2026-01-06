@@ -26,27 +26,36 @@ public class Patron extends Book{
 
     public void createPatron() {
         System.out.println("Enter name: ");
-        String name = scanner.nextLine();
+        name = scanner.nextLine();
+
+        for (Patron p : patrons) {
+            if (p.getName().equalsIgnoreCase(name)) {
+                System.out.println("Name of Patron already exist in system");
+                return;
+            }
+        }
 
         Patron nameOf = new Patron(name);
         patrons.add(nameOf);
-
         System.out.println(nameOf + " was added");
+
         }
 
-        public static void searchPatrons() {
-        ArrayList<Patron> patrons = new ArrayList<>();
+        public void searchPatrons() {
         //will display patron's name with books they have cheecked
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter name: ");
         String name = scanner.nextLine();
+       
 
         System.out.println("---List of Patrons---");
+
         for (Patron p : patrons) {
-            if (p.getTitle().equalsIgnoreCase(name)) {
+            if (p.getName().equalsIgnoreCase(name)) {
                 System.out.println("Patron found");
                 return;
             }
         }
+        
         System.out.println("Patron not found");
     }
 
