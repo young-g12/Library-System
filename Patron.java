@@ -44,6 +44,8 @@ public class Patron extends Book{
 
         if(input.equals("y")) {
             books.add(new Book(title));
+        } else {
+            return;
         }
 
         }
