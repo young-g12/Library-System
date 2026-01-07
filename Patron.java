@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -5,6 +6,9 @@ public class Patron extends Book{
     private String name;
     private String bookTitle;
     ArrayList<Patron> patrons = new ArrayList<>();
+    ArrayList<Book> books = new ArrayList<>();
+    ArrayList<String> CheckedOutBooks = new ArrayList<>();
+    Book book = new Book();
     Scanner scanner = new Scanner(System.in);
 
     public Patron() {
@@ -24,7 +28,7 @@ public class Patron extends Book{
         return this.name;
     }
 
-    public void createPatron() {
+    public void createPatron() throws IOException {
         System.out.println("Enter name: ");
         name = scanner.nextLine();
 
@@ -41,9 +45,15 @@ public class Patron extends Book{
         
         System.out.println("Would you like to checkout Books(y/n): ");
         String input = scanner.nextLine();
+        // switch(input) {
+        //  case "y" -> book.checkOutBook();
+        // }
+        if (input.equalsIgnoreCase("y")) {
+            book.checkOutBook();
+        }
 
         if(input.equals("y")) {
-            books.add(new Book(title));
+            CheckedOutBooks.add(title);
         } else {
             return;
         }
@@ -51,7 +61,7 @@ public class Patron extends Book{
         }
 
         public void searchPatrons() {
-        //will display patron's name with books they have cheecked
+        //will display patron's name with books they have checkedout
         System.out.println("Enter name: ");
         String name = scanner.nextLine();
        
@@ -60,7 +70,7 @@ public class Patron extends Book{
 
         for (Patron p : patrons) {
             if (p.getName().equalsIgnoreCase(name)) {
-                System.out.println("Patron found");
+                System.out.println(name + " has "   + " checked out.");
                 return;
             }
         }

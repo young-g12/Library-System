@@ -16,13 +16,13 @@ public class LibrarySystem {
         Scanner scanner = new Scanner(System.in);
 
 
-        System.out.println("Admin or User");
+        System.out.println("Admin(1) or User(2)");
         int input;
         input = scanner.nextInt();
         if (input == 1) {
             admin.adminLogin();
         } else {
-            
+
         }
         
 
@@ -32,6 +32,7 @@ public class LibrarySystem {
             
             System.out.println("1. Search Book by Title");
             System.out.println("2. Add Books");
+            
             System.out.println("3. Checkout Books");
             System.out.println("4. Return book");
             System.out.println("5. Display Books in System");
