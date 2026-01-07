@@ -14,12 +14,18 @@ public class LibraryAdmin {
                 System.out.println("Enter password: ");
                 password = scanner.nextInt();
             if (password == 112358) {
-              return;
+              displayAdminCommands();
             } else {
                   System.out.println("incorrect attempt");
             }
             passwordAttempts++;
         }
-        
+    }
+
+    public void displayAdminCommands() {
+        while (true) {
+            System.out.println("1. Search Book by Title");
+            System.out.println("2. Add Books");
+        }
     }
 }
