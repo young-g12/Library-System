@@ -39,7 +39,7 @@ public class Patron extends Book{
         patrons.add(nameOf);
         System.out.println(nameOf + " was added");
         
-        System.out.println("Would you like to add Books(y/n): ");
+        System.out.println("Would you like to checkout Books(y/n): ");
         String input = scanner.nextLine();
 
         if(input.equals("y")) {

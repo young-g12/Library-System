@@ -10,11 +10,23 @@ public class LibrarySystem {
      */
     public static void main(String[] args) throws IOException, WrongInputException {
         Book book = new Book();
+        LibraryAdmin admin = new LibraryAdmin();
         Patron p  = new Patron();
         ArrayList<Patron> patrons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome to Library System ");
+
+        System.out.println("Admin or User");
+        int input;
+        input = scanner.nextInt();
+        if (input == 1) {
+            admin.adminLogin();
+        } else {
+            
+        }
+        
+
+        System.out.println("---Welcome to Library System---");
         
         while (true) {
             
@@ -46,10 +58,10 @@ public class LibrarySystem {
                 //for library staff
                 case 1 -> book.findBook();
                 case 5 -> book.displayAllBooks();
+                case 2 -> book.addBook();
 
                 // for patrons
                 case 6 -> p.createPatron();
-                case 2 -> book.addBook();
                 case 3 -> book.checkOutBook();
                 case 4 -> book.returnBook();
                 case 7 -> p.searchPatrons();
