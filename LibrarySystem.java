@@ -21,6 +21,7 @@ public class LibrarySystem {
         input = scanner.nextInt();
         if (input == 1) {
             admin.adminLogin();
+            // admin.displayAdminCommands();
         } else {
 
         }
@@ -30,16 +31,16 @@ public class LibrarySystem {
         
         while (true) {
             
-            System.out.println("1. Search Book by Title");
-            System.out.println("2. Add Books");
-            
+            // System.out.println("1. Search Book by Title");
+            // System.out.println("2. Add Books");
+
             System.out.println("3. Checkout Books");
             System.out.println("4. Return book");
             System.out.println("5. Display Books in System");
             System.out.println("6. Create Patron Book Log");
             System.out.println("7. Display Patrons in system");
             System.out.println();
-            System.out.print("Enter choice: ");
+            System.out.print("Select command: ");
             int choice;
             
             try {
