@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Patron extends Book{
@@ -7,7 +8,7 @@ public class Patron extends Book{
     private String bookTitle;
     ArrayList<Patron> patrons = new ArrayList<>();
     ArrayList<Book> books = new ArrayList<>();
-    ArrayList<String> CheckedOutBooks = new ArrayList<>();
+    ArrayList<String> checkedOutBooks = new ArrayList<>();
     Book book = new Book();
     Scanner scanner = new Scanner(System.in);
 
@@ -22,6 +23,14 @@ public class Patron extends Book{
     public String getName() {
         return name;
     } 
+
+    public void addBook(String title) {
+        checkedOutBooks.add(title);
+    }
+
+    public List<String> getCheckedOutBooks() {
+        return checkedOutBooks;
+    }
 
      @Override 
     public String toString(){
@@ -39,41 +48,43 @@ public class Patron extends Book{
             }
         }
 
-        Patron nameOf = new Patron(name);
-        patrons.add(nameOf);
-        System.out.println(nameOf + " was added");
+        Patron patron = new Patron(name);
+        patrons.add(patron);
+        System.out.println(patron + " was added");
         
         System.out.println("Would you like to checkout Books(y/n): ");
         String input = scanner.nextLine();
-        // switch(input) {
-        //  case "y" -> book.checkOutBook();
-        // }
+      
         if (input.equalsIgnoreCase("y")) {
-            book.checkOutBook();
+            System.out.println("Enter book title: ");
+            String title = scanner.nextLine();
+
+            patron.addBook(title);
         }
 
-        // if(input.equals("y")) {
-        //     CheckedOutBooks.add(title);
-        // } else {
-        //     return;
-        // }
+        
+        System.out.println(name + " checked out " + title);
 
         }
 
-        public void searchPatrons() {
-        //will display patron's name with books they have checkedout
-        System.out.println("Enter name: ");
-        String name = scanner.nextLine();
-       
+       public void searchPatrons() {
+    System.out.println("Enter name: ");
+    String name = scanner.nextLine();
 
-        System.out.println("---List of Patrons---");
+    for (Patron p : patrons) {
+        if (p.getName().equalsIgnoreCase(name)) {
+            System.out.println(p.getName() + " has checked out:");
 
-        for (Patron p : patrons) {
-            if (p.getName().equalsIgnoreCase(name)) {
-                System.out.println(name + " has "   + " checked out.");
-                return;
+            if (p.getCheckedOutBooks().isEmpty()) {
+                System.out.println("No books");
+            } else {
+                for (String book : p.getCheckedOutBooks()) {
+                    System.out.println("- " + book);
+                }
             }
+            return;
         }
+    }
         
         System.out.println("Patron not found");
     }
