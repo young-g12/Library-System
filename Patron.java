@@ -52,11 +52,11 @@ public class Patron extends Book{
             book.checkOutBook();
         }
 
-        if(input.equals("y")) {
-            CheckedOutBooks.add(title);
-        } else {
-            return;
-        }
+        // if(input.equals("y")) {
+        //     CheckedOutBooks.add(title);
+        // } else {
+        //     return;
+        // }
 
         }
 

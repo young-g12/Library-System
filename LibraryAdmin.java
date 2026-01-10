@@ -16,7 +16,7 @@ public class LibraryAdmin {
         while (passwordAttempts <= 3) {
                 System.out.println("Enter password: ");
                 password = scanner.nextInt();
-            if (password == 112358) {
+            if (password == 8008) {
               displayAdminCommands();
             } else {
                   System.out.println("incorrect attempt");
