@@ -17,25 +17,24 @@ public class LibrarySystem {
         Scanner scanner = new Scanner(System.in);
 
 
-        String input1;
-        System.out.println("Type in file name to restore previous session: ");
-        input1 = scanner.nextLine();
-        if (input1.equalsIgnoreCase("save.txt")) {
-            f.restore();
-        } else {
+    
+        f.restore();
+        // if (input1.equalsIgnoreCase("save.txt")) {
+            
+        // } else {
 
-        }
-        
+        // }
+
         System.out.println("Admin(1) or User(2)");
         int input;
         input = scanner.nextInt();
 
         if (input == 1) {
             admin.adminLogin();
-        } else {
+        } else if (input == 2){
 
-        }
-        
+      } else {
+        System.out.println("Invalid input, try again...");
 
         System.out.println("---Welcome to Library System---");
         
@@ -76,6 +75,7 @@ public class LibrarySystem {
             }
         
         }
+    }
     }
 
     public static void endProgram() {
