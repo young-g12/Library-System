@@ -12,10 +12,20 @@ public class LibrarySystem {
         Book book = new Book();
         LibraryAdmin admin = new LibraryAdmin();
         Patron p  = new Patron();
+        RestoreFile f = new RestoreFile();
         ArrayList<Patron> patrons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
 
+        String input1;
+        System.out.println("Type in file name to restore previous session: ");
+        input1 = scanner.nextLine();
+        if (input1.equalsIgnoreCase("save.txt")) {
+            f.restore();
+        } else {
+
+        }
+        
         System.out.println("Admin(1) or User(2)");
         int input;
         input = scanner.nextInt();
