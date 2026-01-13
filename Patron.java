@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Patron extends Book{
+public class Patron {
     private String name;
     private String bookTitle;
     ArrayList<Patron> patrons = new ArrayList<>();
@@ -60,12 +60,9 @@ public class Patron extends Book{
             String title = scanner.nextLine();
 
             patron.addBook(title);
+            System.out.println(name + " checked out " + title);
         }
-
-        
-        System.out.println(name + " checked out " + title);
-
-        }
+    }
 
        public void searchPatrons() {
     System.out.println("Enter name: ");

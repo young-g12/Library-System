@@ -16,9 +16,13 @@ public class LibrarySystem {
         ArrayList<Patron> patrons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Restore session(y/n): ");
+        String input1 = scanner.nextLine();
 
+        if (input1.equalsIgnoreCase("y")) {
+            f.restore();
+        } 
     
-        f.restore();
         // if (input1.equalsIgnoreCase("save.txt")) {
             
         // } else {

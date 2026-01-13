@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 public class RestoreFile {
+    private static final String Files = null;
     Scanner scanner = new Scanner(System.in);
 
     public void restore() {
@@ -45,7 +46,7 @@ public class RestoreFile {
      */
     public static boolean isFileEmpty(String fileName) {
 
-        if (!Files.exists(fileName)) {
+        if (Files == (null)) {
             System.out.println("File does not exist.");
             return true;
         }
